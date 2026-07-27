@@ -1,5 +1,38 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2025-07-15',
-  devtools: { enabled: true }
+	compatibilityDate: '2025-07-15',
+	devtools: { enabled: true },
+	modules: [
+		'@nuxtjs/sanity',
+		'@nuxtjs/tailwindcss',
+		'shadcn-nuxt',
+		'@pinia/nuxt',
+		'@nuxt/image',
+		'@vueuse/motion/nuxt',
+	],
+	sanity: {
+		projectId: process.env.SANITY_PROJECT_ID,
+		dataset: process.env.SANITY_DATASET,
+		apiVersion: '2024-06-15',
+		useCdn: true,
+		typegen: {
+			enabled: true,
+			schemaTypesPath: '../studio/schemaTypes',
+		},
+	},
+
+	shadcn: {
+		prefix: '',
+		componentDir: './app/shared/ui',
+	},
+
+	routeRules: {
+		'/about': { prerender: true },
+		'/contact': { prerender: true },
+
+		'/': { isr: true },
+		'/services/**': { isr: true },
+		'/cases/**': { isr: true },
+		'/blog/**': { isr: true },
+	},
 })

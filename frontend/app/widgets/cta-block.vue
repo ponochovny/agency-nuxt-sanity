@@ -1,0 +1,82 @@
+<template>
+	<section
+		class="py-24 bg-primary text-primary-foreground relative overflow-hidden"
+	>
+		<div
+			class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-white via-transparent to-transparent"
+		></div>
+
+		<div
+			class="container mx-auto px-4 max-w-4xl text-center relative z-10 space-y-8"
+		>
+			<h2
+				v-motion
+				:initial="{
+					opacity: 0,
+					y: 30,
+				}"
+				:visibleOnce="{
+					opacity: 1,
+					y: 0,
+				}"
+				:duration="500"
+				:delay="300"
+				class="text-4xl font-extrabold tracking-tight sm:text-5xl"
+			>
+				{{ block.title }}
+			</h2>
+			<p
+				v-motion
+				:initial="{
+					opacity: 0,
+					y: 30,
+				}"
+				:visibleOnce="{
+					opacity: 1,
+					y: 0,
+				}"
+				:duration="500"
+				:delay="400"
+				class="text-xl text-primary-foreground/80 max-w-2xl mx-auto"
+			>
+				{{ block.description }}
+			</p>
+
+			<div
+				v-motion
+				:initial="{
+					opacity: 0,
+					y: 30,
+				}"
+				:visibleOnce="{
+					opacity: 1,
+					y: 0,
+				}"
+				:duration="500"
+				:delay="500"
+				class="pt-4"
+			>
+				<Button
+					size="lg"
+					variant="secondary"
+					class="font-semibold text-lg px-8 h-14"
+					as-child
+				>
+					<NuxtLink to="/contact">
+						{{ block.buttonText }}
+					</NuxtLink>
+				</Button>
+			</div>
+		</div>
+	</section>
+</template>
+
+<script setup lang="ts">
+defineProps<{
+	block: {
+		title: string
+		description: string
+		buttonText: string
+	}
+}>()
+</script>
