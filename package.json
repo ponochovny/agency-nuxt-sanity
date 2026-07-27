@@ -3,8 +3,8 @@
 	"description": "",
 	"scripts": {
 		"dev": "npm-run-all --parallel dev:*",
-		"dev:next": "npm run dev --workspace=frontend",
-		"dev:studio": "npm run dev --workspace=studio"
+		"dev:nuxt": "npm run dev --workspace=frontend",
+		"dev:sanity": "npm run dev --workspace=studio"
 	},
 	"workspaces": [
 		"studio",
