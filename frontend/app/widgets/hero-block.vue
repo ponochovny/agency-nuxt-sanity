@@ -15,8 +15,12 @@
 			:duration="500"
 			class="flex flex-col container items-center text-center"
 		>
-			<h1 class="text-5xl font-bold tracking-tight mb-4">{{ block.title }}</h1>
-			<p class="text-xl text-muted-foreground mb-8">{{ block.subtitle }}</p>
+			<h1 class="text-5xl font-bold tracking-tight mb-4">
+				{{ block.title }}
+			</h1>
+			<p class="text-xl text-muted-foreground mb-8">
+				{{ block.subtitle }}
+			</p>
 
 			<Button size="lg" as-child>
 				<NuxtLink to="/contact">
