@@ -29,12 +29,12 @@ export const usePage = async (slug: string) => {
 }
 
 export const useSiteSettings = async () => {
-	const siteSettingsQuery = groq`*[_type == "siteSettings"][0] {
+	const siteSettingsQuery = defineQuery(`*[_type == "siteSettings"][0] {
     siteTitle,
     email,
     phone,
     socialLinks
-  }`
+  }`)
 
 	const { data, pending, error } =
 		await useSanityQuery<SiteSettingsQueryResult>(siteSettingsQuery)
@@ -43,13 +43,14 @@ export const useSiteSettings = async () => {
 }
 
 export const useProjects = async () => {
-	const allProjectsQuery = groq`*[_type == "project"] | order(_createdAt desc) {
+	const allProjectsQuery =
+		defineQuery(`*[_type == "project"] | order(_createdAt desc) {
     _id,
     title,
     "slug": slug.current,
     client,
     "coverUrl": coverImage.asset->url
-  }`
+  }`)
 
 	const { data, pending, error } =
 		await useSanityQuery<AllProjectsQueryResult>(allProjectsQuery)
@@ -58,7 +59,8 @@ export const useProjects = async () => {
 }
 
 export const useProject = async (slug: string) => {
-	const singleProjectQuery = groq`*[_type == "project" && slug.current == $slug][0] {
+	const singleProjectQuery =
+		defineQuery(`*[_type == "project" && slug.current == $slug][0] {
     title,
     client,
     task,
@@ -78,7 +80,7 @@ export const useProject = async (slug: string) => {
       metaDescription,
       "ogImageUrl": ogImage.asset->url
     }
-  }`
+  }`)
 
 	const { data, pending, error } =
 		await useSanityQuery<SingleProjectQueryResult>(singleProjectQuery, { slug })
@@ -87,7 +89,7 @@ export const useProject = async (slug: string) => {
 }
 
 export const usePosts = async () => {
-	const allPostsQuery = groq`
+	const allPostsQuery = defineQuery(`
     *[_type == "post"] | order(publishedAt desc) {
       _id,
       title,
@@ -96,7 +98,7 @@ export const usePosts = async () => {
       excerpt,
       "coverUrl": coverImage.asset->url
     }
-  `
+  `)
 
 	const { data, pending, error } =
 		await useSanityQuery<AllPostsQueryResult>(allPostsQuery)
@@ -105,7 +107,7 @@ export const usePosts = async () => {
 }
 
 export const usePost = async (slug: string) => {
-	const postBySlugQuery = groq`
+	const postBySlugQuery = defineQuery(`
     *[_type == "post" && slug.current == $slug][0] {
       _id,
       title,
@@ -114,7 +116,7 @@ export const usePost = async (slug: string) => {
       content,
       "seo": { title, description }
     }
-  `
+  `)
 
 	const { data, pending, error } = await useSanityQuery<PostBySlugQueryResult>(
 		postBySlugQuery,
@@ -125,7 +127,8 @@ export const usePost = async (slug: string) => {
 }
 
 export const useServices = async () => {
-	const allServicesQuery = groq`*[_type == "service"] | order(_createdAt asc) {
+	const allServicesQuery =
+		defineQuery(`*[_type == "service"] | order(_createdAt asc) {
     _id,
     title,
     "slug": slug.current,
@@ -134,7 +137,7 @@ export const useServices = async () => {
     timeframe,
     excerpt,
     "coverUrl": coverImage.asset->url
-  }`
+  }`)
 
 	const { data, pending, error } =
 		await useSanityQuery<AllServicesQueryResult>(allServicesQuery)
@@ -143,7 +146,8 @@ export const useServices = async () => {
 }
 
 export const useService = async (slug: string) => {
-	const singleServiceQuery = groq`*[_type == "service" && slug.current == $slug][0] {
+	const singleServiceQuery =
+		defineQuery(`*[_type == "service" && slug.current == $slug][0] {
     title,
     badge,
     price,
@@ -165,7 +169,7 @@ export const useService = async (slug: string) => {
         "imageUrl": image.asset->url
       }
     }
-  }`
+  }`)
 
 	const { data, pending, error } =
 		await useSanityQuery<SingleServiceQueryResult>(singleServiceQuery, { slug })

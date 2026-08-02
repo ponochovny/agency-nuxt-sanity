@@ -17,9 +17,10 @@ export default defineConfig({
 
     presentationTool({
       previewUrl: {
-        origin: 'http://localhost:3000?preview=true',
+        origin: 'http://localhost:3000',
         previewMode: {
-          enable: '/api/draft/enable',
+          enable: '/preview/enable',
+          disable: '/preview/disable',
         },
       },
     }),
