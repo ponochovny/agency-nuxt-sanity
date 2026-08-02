@@ -4,6 +4,7 @@ export const featuresBlock = defineType({
   name: 'featuresBlock',
   title: 'Features Section',
   type: 'object',
+  icon: () => '✨',
   fields: [
     defineField({name: 'title', title: 'Heading', type: 'string'}),
     defineField({name: 'subtitle', title: 'Subtitle', type: 'text'}),
@@ -23,4 +24,10 @@ export const featuresBlock = defineType({
       ],
     }),
   ],
+  preview: {
+    select: {
+      title: 'title',
+      subtitle: 'subtitle',
+    },
+  },
 })

@@ -5,6 +5,7 @@ import HeroBlock from '~/widgets/hero-block.vue'
 import FeaturesBlock from '~/widgets/features-block.vue'
 import TextImageBlock from '~/widgets/text-image-block.vue'
 import CtaBlock from '~/widgets/cta-block.vue'
+import LogoMarquee from '~/widgets/logo-marquee.vue'
 
 const route = useRoute()
 const slug = route.params.slug ? String(route.params.slug) : 'home'
@@ -17,6 +18,7 @@ const portableTextComponents = {
 		featuresBlock: ({ value }: any) => h(FeaturesBlock, { block: value }),
 		textImageBlock: ({ value }: any) => h(TextImageBlock, { block: value }),
 		ctaBlock: ({ value }: any) => h(CtaBlock, { block: value }),
+		logoMarqueeBlock: ({ value }: any) => h(LogoMarquee, { block: value }),
 	},
 }
 

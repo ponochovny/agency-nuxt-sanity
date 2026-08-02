@@ -4,6 +4,7 @@ export const textImageBlock = defineType({
   name: 'textImageBlock',
   title: 'Text with Image Section',
   type: 'object',
+  icon: () => '🖼️',
   fields: [
     defineField({name: 'title', title: 'Heading', type: 'string'}),
     defineField({name: 'text', title: 'Text', type: 'text'}),
@@ -20,4 +21,11 @@ export const textImageBlock = defineType({
       },
     }),
   ],
+  preview: {
+    select: {
+      title: 'title',
+      subtitle: 'text',
+      media: 'image',
+    },
+  },
 })

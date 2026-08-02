@@ -39,4 +39,11 @@ export default defineType({
       of: [{type: 'block'}, {type: 'image'}],
     }),
   ],
+  preview: {
+    select: {
+      title: 'title',
+      subtitle: 'publishedAt',
+      media: 'coverImage',
+    },
+  },
 })

@@ -36,7 +36,7 @@ const { data, pending } = await usePost(slug)
 			<NuxtImg
 				v-if="data.coverUrl"
 				:src="data.coverUrl"
-				className="relative aspect-video w-full object-cover mb-6"
+				className="relative aspect-video w-full object-cover mb-6 rounded-2xl"
 			/>
 			<div
 				class="dark:prose-invert prose prose-a:text-red-500 max-w-2xl"

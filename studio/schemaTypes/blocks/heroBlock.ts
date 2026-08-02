@@ -4,6 +4,7 @@ export const heroBlock = defineType({
   name: 'heroBlock',
   title: 'Hero Section',
   type: 'object',
+  icon: () => '🦸‍♂️',
   fields: [
     defineField({name: 'title', title: 'Heading', type: 'string'}),
     defineField({name: 'subtitle', title: 'Subtitle', type: 'text'}),
@@ -14,4 +15,10 @@ export const heroBlock = defineType({
       initialValue: 'Contact Us',
     }),
   ],
+  preview: {
+    select: {
+      title: 'title',
+      subtitle: 'subtitle',
+    },
+  },
 })

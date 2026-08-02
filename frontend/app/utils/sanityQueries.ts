@@ -6,6 +6,13 @@ export const usePage = async (slug: string) => {
       _type == "textImageBlock" => {
         ...,
         "imageUrl": image.asset->url
+      },
+      _type == "logoMarqueeBlock" => {
+        ...,
+        "logos": logos[] {
+          alt,
+          "url": logo.asset->url
+        }
       }
     },
     seoGroup {
@@ -166,8 +173,13 @@ export const useService = async (slug: string) => {
       ...,
       _type == "textImageBlock" => {
         ...,
-        "imageUrl": image.asset->url
-      }
+        "imageUrl": image.asset->url      },
+      _type == "logoMarqueeBlock" => {
+        ...,
+        "logos": logos[] {
+          alt,
+          "url": logo.asset->url
+        }      }
     }
   }`)
 

@@ -114,12 +114,12 @@
 						:delay="500 + +i * 100"
 					>
 						<a
-							:href="link"
+							:href="link.url"
 							target="_blank"
 							rel="noopener noreferrer"
 							class="hover:text-primary transition-colors"
 						>
-							{{ link }}
+							{{ link.platform }}
 						</a>
 					</li>
 				</ul>

@@ -81,8 +81,8 @@ export default defineType({
 
   preview: {
     select: {
-      title: 'client',
-      subtitle: 'task',
+      title: 'title',
+      subtitle: 'client',
       media: 'coverImage',
     },
   },

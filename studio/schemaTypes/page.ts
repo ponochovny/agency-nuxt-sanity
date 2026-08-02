@@ -18,6 +18,7 @@ export default defineType({
         {type: 'textImageBlock'}, // Our custom block!
         {type: 'featuresBlock'}, // Our custom block!
         {type: 'ctaBlock'}, // Our custom block!
+        {type: 'logoMarqueeBlock'},
         // Here you can add more custom blocks like { type: 'galleryBlock' } and so on
       ],
     }),
@@ -36,4 +37,10 @@ export default defineType({
       ],
     }),
   ],
+  preview: {
+    select: {
+      title: 'title',
+      subtitle: 'slug.current',
+    },
+  },
 })

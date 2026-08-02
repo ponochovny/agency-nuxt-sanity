@@ -4,6 +4,7 @@ import {heroBlock} from './blocks/heroBlock'
 import {ctaBlock} from './blocks/ctaBlock'
 import {featuresBlock} from './blocks/featuresBlock'
 import {textImageBlock} from './blocks/textImageBlock'
+import {logoMarqueeBlock} from './blocks/logoMarqueeBlock'
 import siteSettings from './siteSettings'
 import project from './project'
 import post from './post'
@@ -20,4 +21,5 @@ export const schemaTypes = [
   textImageBlock,
   featuresBlock,
   ctaBlock,
+  logoMarqueeBlock,
 ]

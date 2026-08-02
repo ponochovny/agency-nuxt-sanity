@@ -13,7 +13,21 @@ export default defineType({
       name: 'socialLinks',
       title: 'Social links',
       type: 'array',
-      of: [{type: 'string'}], // For simplicity, just an array of links
+      of: [
+        {
+          type: 'object',
+          fields: [
+            {name: 'platform', title: 'Platform', type: 'string'},
+            {name: 'url', title: 'URL', type: 'url'},
+          ],
+        },
+      ],
     }),
   ],
+  preview: {
+    select: {
+      title: 'siteTitle',
+      subtitle: 'email',
+    },
+  },
 })
