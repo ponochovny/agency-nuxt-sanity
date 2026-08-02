@@ -8,7 +8,9 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-	--font-heading: var(--font-mono);
+	--font-sans: var(--font-mono), sans-serif;
+	--font-heading: 'Unbounded', sans-serif;
+
 	--color-sidebar-ring: var(--sidebar-ring);
 	--color-sidebar-border: var(--sidebar-border);
 	--color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -54,7 +56,7 @@
 	--card-foreground: oklch(0.141 0.005 285.823);
 	--popover: oklch(1 0 0);
 	--popover-foreground: oklch(0.141 0.005 285.823);
-	--primary: oklch(35.315% 0.19062 271.111);
+	--primary: oklch(93.6% 0.225 121.2);
 	--primary-foreground: oklch(0.985 0 0);
 	--secondary: oklch(0.967 0.001 286.375);
 	--secondary-foreground: oklch(0.21 0.006 285.885);
@@ -88,7 +90,7 @@
 	--card-foreground: oklch(0.985 0 0);
 	--popover: oklch(0.21 0.006 285.885);
 	--popover-foreground: oklch(0.985 0 0);
-	--primary: oklch(0.92 0.004 286.32);
+	--primary: oklch(93.6% 0.225 121.2);
 	--primary-foreground: oklch(0.21 0.006 285.885);
 	--secondary: oklch(0.274 0.006 286.033);
 	--secondary-foreground: oklch(0.985 0 0);
@@ -120,6 +122,14 @@
 		@apply border-border outline-ring/50;
 	}
 	body {
-		@apply bg-background text-foreground;
+		@apply font-sans bg-background text-foreground;
+	}
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply font-heading;
 	}
 }

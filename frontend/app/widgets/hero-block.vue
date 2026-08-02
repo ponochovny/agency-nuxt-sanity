@@ -3,14 +3,10 @@
 		class="py-20 flex justify-center items-center text-center bg-linear-to-b from-primary/10 to-transparent"
 	>
 		<div
-			v-motion
+			v-motion-slide-visible-once-bottom
 			:initial="{
-				opacity: 0,
 				y: 30,
-			}"
-			:visibleOnce="{
-				opacity: 1,
-				y: 0,
+				opacity: 0,
 			}"
 			:duration="500"
 			class="flex flex-col container items-center text-center"

@@ -10,7 +10,15 @@ export default defineNuxtConfig({
 		'@pinia/nuxt',
 		'@nuxt/image',
 		'@vueuse/motion/nuxt',
+		'@nuxtjs/color-mode',
 	],
+
+	colorMode: {
+		classSuffix: '',
+		preference: 'dark',
+		fallback: 'dark',
+		dataValue: 'theme',
+	},
 
 	sanity: {
 		projectId: process.env.SANITY_PROJECT_ID,

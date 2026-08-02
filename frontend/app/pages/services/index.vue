@@ -9,7 +9,14 @@ useSeoMeta({
 
 <template>
 	<div class="py-20 container mx-auto px-4 max-w-6xl">
-		<div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+		<div
+			v-motion-slide-visible-once-bottom
+			:initial="{
+				y: 30,
+				opacity: 0,
+			}"
+			class="text-center max-w-3xl mx-auto mb-16 space-y-4"
+		>
 			<span class="text-xs uppercase font-bold tracking-widest text-primary"
 				>How we help</span
 			>
@@ -31,8 +38,14 @@ useSeoMeta({
 			class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20"
 		>
 			<div
-				v-for="service in services"
+				v-for="(service, idx) in services"
 				:key="service._id"
+				v-motion-slide-visible-once-bottom
+				:initial="{
+					y: 30,
+					opacity: 0,
+				}"
+				:delay="100 + idx * 100"
 				class="group relative flex flex-col bg-card border rounded-2xl p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
 			>
 				<div class="flex items-center justify-between mb-4">
@@ -82,6 +95,12 @@ useSeoMeta({
 
 		<!-- Блок призыва к действию -->
 		<div
+			v-motion-slide-visible-once-bottom
+			:initial="{
+				y: 30,
+				opacity: 0,
+			}"
+			:delay="500"
 			class="bg-primary/5 border rounded-3xl p-8 sm:p-12 text-center max-w-4xl mx-auto space-y-6"
 		>
 			<h3 class="text-2xl sm:text-3xl font-bold">

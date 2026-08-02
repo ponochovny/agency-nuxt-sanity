@@ -38,7 +38,10 @@ const { data, pending } = await usePost(slug)
 				:src="data.coverUrl"
 				className="relative aspect-video w-full object-cover mb-6"
 			/>
-			<div class="prose prose-a:text-red-500 max-w-2xl" v-if="data.content">
+			<div
+				class="dark:prose-invert prose prose-a:text-red-500 max-w-2xl"
+				v-if="data.content"
+			>
 				<PortableText :portableText="data.content" />
 			</div>
 		</div>

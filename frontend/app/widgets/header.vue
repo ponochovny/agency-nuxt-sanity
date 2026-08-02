@@ -45,13 +45,31 @@
 				>
 			</nav>
 
-			<Button as-child variant="default">
-				<NuxtLink to="/contact"> Contact Us </NuxtLink>
-			</Button>
+			<div class="flex items-center gap-2">
+				<Button
+					variant="outline"
+					size="icon"
+					@click="
+						colorMode.preference =
+							colorMode.preference === 'dark' ? 'light' : 'dark'
+					"
+					:class="{ 'border-primary': colorMode.preference === 'dark' }"
+				>
+					<Moon v-if="colorMode.preference !== 'dark'" class="h-4 w-4" />
+					<Sun v-else class="h-4 w-4" />
+				</Button>
+
+				<Button as-child variant="default">
+					<NuxtLink to="/contact"> Contact Us </NuxtLink>
+				</Button>
+			</div>
 		</div>
 	</header>
 </template>
 
 <script setup lang="ts">
 defineProps<{ settings: any }>()
+import { Moon, Sun } from '@lucide/vue'
+
+const colorMode = useColorMode()
 </script>

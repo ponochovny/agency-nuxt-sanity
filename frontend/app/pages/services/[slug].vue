@@ -32,7 +32,11 @@ useSeoMeta({
 		</div>
 
 		<div v-else-if="service">
-			<section class="container mx-auto px-4 max-w-5xl mb-20">
+			<section
+				class="container mx-auto px-4 max-w-5xl mb-20"
+				v-motion-slide-visible-once-bottom
+				:initial="{ y: 30, opacity: 0 }"
+			>
 				<NuxtLink
 					to="/services"
 					class="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary mb-8"
@@ -84,7 +88,12 @@ useSeoMeta({
 				</div>
 			</section>
 
-			<section v-if="service.benefits?.length" class="bg-muted/40 py-20 mb-20">
+			<section
+				v-if="service.benefits?.length"
+				class="bg-muted/40 py-20 mb-20"
+				v-motion-slide-visible-once-bottom
+				:initial="{ y: 30, opacity: 0 }"
+			>
 				<div class="container mx-auto px-4 max-w-6xl">
 					<h2 class="text-3xl font-bold text-center mb-12">
 						What's Included in the Price
@@ -112,6 +121,8 @@ useSeoMeta({
 			<section
 				v-if="service.relatedCases?.length"
 				class="container mx-auto px-4 max-w-6xl mb-20"
+				v-motion-slide-visible-once-bottom
+				:initial="{ y: 30, opacity: 0 }"
 			>
 				<h2 class="text-3xl font-bold mb-8 text-center">
 					Work examples for this service
