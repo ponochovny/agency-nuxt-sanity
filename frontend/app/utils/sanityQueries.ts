@@ -1,3 +1,5 @@
+import { defineQuery } from 'groq'
+
 export const usePage = async (slug: string) => {
 	const pageQuery = groq`*[_type == "page" && slug.current == $slug][0] {
     title,
@@ -36,12 +38,12 @@ export const usePage = async (slug: string) => {
 }
 
 export const useSiteSettings = async () => {
-	const siteSettingsQuery = defineQuery(`*[_type == "siteSettings"][0] {
+	const siteSettingsQuery = groq`*[_type == "siteSettings"][0] {
     siteTitle,
     email,
     phone,
     socialLinks
-  }`)
+  }`
 
 	const { data, pending, error } =
 		await useSanityQuery<SiteSettingsQueryResult>(siteSettingsQuery)

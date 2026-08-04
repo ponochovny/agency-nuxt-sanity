@@ -69,3 +69,22 @@ defineProps<{
 }>()
 </script>
 ```
+
+## FIX
+
+```BASH
+[@nuxtjs/sanity]  WARN  Could not generate Sanity types: Unknown file extension ".css" for \node_modules\@sanity-labs\ui-poc\dist\styles.css
+```
+
+1. install `"@sanity/types": "^6.7.0"` as non dev into sanity
+2. Use `@sanity/types` to import `import {defineField, defineType} from '@sanity/types'`
+
+```TS
+const MyQuery = groq``
+
+// or
+
+import { defineQuery } from 'groq'
+
+const MyQuery = defineQuery(``)
+```
