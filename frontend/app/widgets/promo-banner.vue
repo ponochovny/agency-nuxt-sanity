@@ -64,12 +64,12 @@ const visibleState = ref(false)
 const hasMounted = ref(false)
 
 const buttonUrl = computed(() => {
-  const value = props.banner?.buttonUrl
+  const value = props.banner?.buttonUrl?.trim()
   if (!value) return ''
 
   try {
-    const url = new URL(value, 'https://example.invalid')
-    return ['http:', 'https:'].includes(url.protocol) ? value : ''
+    const url = new URL(value)
+    return ['http:', 'https:'].includes(url.protocol) ? url.href : ''
   } catch {
     return ''
   }
