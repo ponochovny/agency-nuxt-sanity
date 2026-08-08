@@ -22,7 +22,7 @@
 					target="_blank"
 					rel="noopener noreferrer"
 				>
-					{{ banner?.buttonText || 'Lean more' }}
+					{{ banner?.buttonText || 'Learn more' }}
 				</a>
 				<button
 					type="button"
@@ -80,7 +80,12 @@ const bannerKey = computed(() => {
 		return ''
 	}
 
-	return `${props.banner.bannerType || 'promo'}|${props.banner.message || ''}|${props.banner.buttonText || ''}|${props.banner.buttonUrl || ''}`
+	return JSON.stringify([
+		props.banner.bannerType || 'promo',
+		props.banner.message || '',
+		props.banner.buttonText || '',
+		props.banner.buttonUrl || '',
+	])
 })
 
 const isDismissed = () => {
