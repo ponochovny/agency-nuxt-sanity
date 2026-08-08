@@ -49,14 +49,4 @@ export default defineNuxtConfig({
 		prefix: '',
 		componentDir: './app/shared/ui',
 	},
-
-	routeRules: {
-		'/about': { prerender: true },
-		'/contact': { prerender: true },
-
-		'/': { isr: true },
-		'/services/**': { isr: true },
-		'/cases/**': { isr: true },
-		'/blog/**': { isr: true },
-	},
 })
