@@ -55,14 +55,16 @@ export const usePosts = async () => {
 export const usePost = async (slug: string) => {
 	const postBySlugQuery = defineQuery(`
     *[_type == "post" && slug.current == $slug][0] {
-      _id,
+        _id,
       title,
       publishedAt,
       "coverUrl": coverImage.asset->url,
       content,
-      "seo": { title, description }
-    }
-  `)
+      "seo": {
+        "title": seo.title,
+        "description": seo.description
+      }
+    `)
 
 	const {data, pending, error} = await useSanityQuery<PostBySlugQueryResult>(postBySlugQuery, {
 		slug,

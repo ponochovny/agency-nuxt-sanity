@@ -64,15 +64,15 @@ const visibleState = ref(false)
 const hasMounted = ref(false)
 
 const buttonUrl = computed(() => {
-  const value = props.banner?.buttonUrl?.trim()
-  if (!value) return ''
+	const value = props.banner?.buttonUrl?.trim()
+	if (!value) return ''
 
-  try {
-    const url = new URL(value)
-    return ['http:', 'https:'].includes(url.protocol) ? url.href : ''
-  } catch {
-    return ''
-  }
+	try {
+		const url = new URL(value)
+		return ['http:', 'https:'].includes(url.protocol) ? url.href : ''
+	} catch {
+		return ''
+	}
 })
 
 const bannerKey = computed(() => {
@@ -84,7 +84,7 @@ const bannerKey = computed(() => {
 		props.banner.bannerType || 'promo',
 		props.banner.message || '',
 		props.banner.buttonText || '',
-		props.banner.buttonUrl || '',
+		buttonUrl.value,
 	])
 })
 
