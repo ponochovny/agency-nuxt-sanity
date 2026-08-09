@@ -42,7 +42,13 @@ export const useSiteSettings = async () => {
     siteTitle,
     email,
     phone,
-    socialLinks
+    socialLinks,
+    promoBanner {
+      enabled,
+      bannerType,
+      message,
+      ctaUrl
+    }
   }`
 
 	const { data, pending, error } =
@@ -92,7 +98,9 @@ export const useProject = async (slug: string) => {
   }`)
 
 	const { data, pending, error } =
-		await useSanityQuery<SingleProjectQueryResult>(singleProjectQuery, { slug })
+		await useSanityQuery<SingleProjectQueryResult>(singleProjectQuery, {
+			slug,
+		})
 
 	return { data, pending, error }
 }
@@ -186,7 +194,9 @@ export const useService = async (slug: string) => {
   }`)
 
 	const { data, pending, error } =
-		await useSanityQuery<SingleServiceQueryResult>(singleServiceQuery, { slug })
+		await useSanityQuery<SingleServiceQueryResult>(singleServiceQuery, {
+			slug,
+		})
 
 	return { data, pending, error }
 }

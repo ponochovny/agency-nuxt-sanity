@@ -1,6 +1,6 @@
 <template>
 	<section
-		class="py-20 flex justify-center items-center text-center bg-linear-to-b from-primary/10 to-transparent"
+		class="py-60 flex justify-center items-center text-center bg-linear-to-b from-primary/10 to-transparent"
 	>
 		<div
 			v-motion-slide-visible-once-bottom

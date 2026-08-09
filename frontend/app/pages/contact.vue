@@ -14,10 +14,10 @@ const submitForm = async () => {
 	successMessage.value = ''
 
 	try {
-		await $fetch('/api/contact', {
-			method: 'POST',
-			body: form,
-		})
+		// await $fetch('/api/contact', {
+		// 	method: 'POST',
+		// 	body: form,
+		// })
 		successMessage.value = 'Thanks! We will contact you shortly.'
 		form.name = ''
 		form.email = ''
