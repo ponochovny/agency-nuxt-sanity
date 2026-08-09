@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
 	compatibilityDate: '2025-07-15',
-	devtools: { enabled: true },
+	devtools: {enabled: true},
 	modules: [
 		'@nuxtjs/sanity',
 		'@nuxt/fonts',
@@ -32,8 +32,7 @@ export default defineNuxtConfig({
 		},
 		visualEditing: {
 			studioUrl:
-				process.env.SANITY_STUDIO_URL ||
-				'https://ponochovny-agency-nuxt-studio.sanity.studio',
+				process.env.SANITY_STUDIO_URL || 'https://ponochovny-agency-nuxt-studio.sanity.studio',
 			token: process.env.SANITY_STUDIO_TOKEN || '',
 			stega: true,
 			zIndex: 51,
@@ -48,5 +47,23 @@ export default defineNuxtConfig({
 	shadcn: {
 		prefix: '',
 		componentDir: './app/shared/ui',
+	},
+
+	routeRules: {
+		// Static pages pre-rendered at build time
+		'/contact': { prerender: true },
+
+		// CMS dynamic sections cached with ISR (revalidates via webhook or 1 hour fallback TTL)
+		'/': { isr: 3600 },
+		'/services/**': { isr: 3600 },
+		'/cases/**': { isr: 3600 },
+		'/blog/**': { isr: 3600 },
+
+		// Dynamic Page Builder catch-all routes (e.g. /[slug])
+		'/*': { isr: 3600 },
+
+		// API endpoints and Sanity Studio Visual Editing preview routes (never cached)
+		'/api/**': { cache: false },
+		'/preview/**': { cache: false },
 	},
 })
