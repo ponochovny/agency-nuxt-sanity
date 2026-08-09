@@ -2,14 +2,10 @@
 	<section class="py-20 bg-muted/30">
 		<div class="container mx-auto px-4">
 			<div
-				v-motion
+				v-motion-slide-visible-once-bottom
 				:initial="{
 					opacity: 0,
 					y: 30,
-				}"
-				:visibleOnce="{
-					opacity: 1,
-					y: 0,
 				}"
 				:duration="500"
 				class="text-center mb-12"
@@ -25,8 +21,8 @@
 			<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 				<Card
 					v-for="(item, index) in block.items"
-					:key="index"
-					v-motion
+					:key="item._key"
+					v-motion-slide-visible-once-bottom
 					:initial="{
 						opacity: 0,
 						y: 30,
@@ -58,7 +54,7 @@ defineProps<{
 	block: {
 		title: string
 		subtitle: string
-		items: Array<{ title: string; description: string; icon?: string }>
+		items: Array<{_key: string; title: string; description: string; icon?: string}>
 	}
 }>()
 </script>

@@ -10,7 +10,7 @@
 			class="container mx-auto px-4 max-w-4xl text-center relative z-10 space-y-8"
 		>
 			<h2
-				v-motion
+				v-motion-slide-visible-once-bottom
 				:initial="{
 					opacity: 0,
 					y: 30,
@@ -26,7 +26,7 @@
 				{{ block.title }}
 			</h2>
 			<p
-				v-motion
+				v-motion-slide-visible-once-bottom
 				:initial="{
 					opacity: 0,
 					y: 30,
@@ -43,7 +43,7 @@
 			</p>
 
 			<div
-				v-motion
+				v-motion-slide-visible-once-bottom
 				:initial="{
 					opacity: 0,
 					y: 30,

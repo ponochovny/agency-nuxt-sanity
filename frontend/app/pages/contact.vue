@@ -16,7 +16,7 @@ const submitForm = async () => {
 	try {
 		// await $fetch('/api/contact', {
 		// 	method: 'POST',
-		// 	body: form,
+		// 	body: { ...form },
 		// })
 		successMessage.value = 'Thanks! We will contact you shortly.'
 		form.name = ''
@@ -50,28 +50,28 @@ const submitForm = async () => {
 			class="space-y-6 bg-muted/20 p-8 rounded-xl border"
 		>
 			<div>
-				<label class="block text-sm font-medium mb-2">Your Name</label>
-				<Input v-model="form.name" type="text" required class="w-full" />
+				<label for="contact-name" class="block text-sm font-medium mb-2">Your Name</label>
+				<Input id="contact-name" v-model="form.name" type="text" required class="w-full" />
 			</div>
 
 			<div>
-				<label class="block text-sm font-medium mb-2">Email</label>
-				<Input v-model="form.email" type="email" required class="w-full" />
+				<label for="contact-email" class="block text-sm font-medium mb-2">Email</label>
+				<Input id="contact-email" v-model="form.email" type="email" required class="w-full" />
 			</div>
 
 			<div>
-				<label class="block text-sm font-medium mb-2">Message</label>
-				<Textarea v-model="form.message" rows="4" required class="w-full" />
+				<label for="contact-message" class="block text-sm font-medium mb-2">Message</label>
+				<Textarea id="contact-message" v-model="form.message" rows="4" required class="w-full" />
 			</div>
 
 			<Button type="submit" :disabled="loading" class="w-full">
 				{{ loading ? 'Sending...' : 'Send Message' }}
 			</Button>
 
-			<p v-if="successMessage" class="text-green-400 text-sm mt-4">
+			<p v-if="successMessage" role="status" aria-live="polite" class="text-green-400 text-sm mt-4">
 				{{ successMessage }}
 			</p>
-			<p v-if="errorMessage" class="text-red-400 text-sm mt-4">
+			<p v-if="errorMessage" role="alert" class="text-red-400 text-sm mt-4">
 				{{ errorMessage }}
 			</p>
 		</form>

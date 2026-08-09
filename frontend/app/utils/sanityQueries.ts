@@ -1,44 +1,42 @@
-import { defineQuery } from 'groq'
-
 export const usePage = async (slug: string) => {
 	const pageQuery = groq`*[_type == "page" && slug.current == $slug][0] {
-    title,
-    content[] {
-      ...,
-      _type == "textImageBlock" => {
-        ...,
-        "imageUrl": image.asset->url
-      },
-      _type == "logoMarqueeBlock" => {
-        ...,
-        "logos": logos[] {
-          alt,
-          "url": logo.asset->url
+        title,
+        content[] {
+            ...,
+            _type == "textImageBlock" => {
+                ...,
+                "imageUrl": image.asset->url
+            },
+            _type == "logoMarqueeBlock" => {
+                ...,
+                "logos": logos[] {
+                alt,
+                "url": logo.asset->url
+                }
+            }
+            },
+            seoGroup {
+            metaTitle,
+            metaDescription,
+            ogImage {
+                "imageUrl": ogImage.asset->url
+            }
         }
-      }
-    },
-    seoGroup {
-      metaTitle,
-      metaDescription,
-      ogImage {
-        "imageUrl": ogImage.asset->url
-      }
-    }
-  }`
+    }`
 
-	const { data, pending, error } = await useSanityQuery<PageQueryResult>(
+	const {data, pending, error} = await useSanityQuery<PageQueryResult>(
 		pageQuery,
 		{
 			slug,
 		},
-		{ key: `page-${slug}` },
+		{key: `page-${slug}`},
 	)
 
-	return { data, pending, error }
+	return {data, pending, error}
 }
 
 export const useSiteSettings = async () => {
-	const siteSettingsQuery = groq`*[_type == "siteSettings"][0] {
+	const siteSettingsQuery = groq`*[_type == "siteSettings"] | order(_updatedAt desc)[0] {
     siteTitle,
     email,
     phone,
@@ -51,15 +49,52 @@ export const useSiteSettings = async () => {
     }
   }`
 
-	const { data, pending, error } =
-		await useSanityQuery<SiteSettingsQueryResult>(siteSettingsQuery)
+	const {data, pending, error} = await useSanityQuery<SiteSettingsQueryResult>(siteSettingsQuery)
 
-	return { data, pending, error }
+	return {data, pending, error}
+}
+
+export const usePosts = async () => {
+	const allPostsQuery = defineQuery(`
+    *[_type == "post"] | order(publishedAt desc) {
+      _id,
+      title,
+      "slug": slug.current,
+      publishedAt,
+      excerpt,
+      "coverUrl": coverImage.asset->url
+    }
+  `)
+
+	const {data, pending, error} = await useSanityQuery<AllPostsQueryResult>(allPostsQuery)
+
+	return {data, pending, error}
+}
+
+export const usePost = async (slug: string) => {
+	const postBySlugQuery = defineQuery(`
+    *[_type == "post" && slug.current == $slug][0] {
+        _id,
+      title,
+      publishedAt,
+      "coverUrl": coverImage.asset->url,
+      content,
+      "seo": {
+        "title": seo.title,
+        "description": seo.description
+      }
+  }
+    `)
+
+	const {data, pending, error} = await useSanityQuery<PostBySlugQueryResult>(postBySlugQuery, {
+		slug,
+	})
+
+	return {data, pending, error}
 }
 
 export const useProjects = async () => {
-	const allProjectsQuery =
-		defineQuery(`*[_type == "project"] | order(_createdAt desc) {
+	const allProjectsQuery = defineQuery(`*[_type == "project"] | order(_createdAt desc) {
     _id,
     title,
     "slug": slug.current,
@@ -67,15 +102,13 @@ export const useProjects = async () => {
     "coverUrl": coverImage.asset->url
   }`)
 
-	const { data, pending, error } =
-		await useSanityQuery<AllProjectsQueryResult>(allProjectsQuery)
+	const {data, pending, error} = await useSanityQuery<AllProjectsQueryResult>(allProjectsQuery)
 
-	return { data, pending, error }
+	return {data, pending, error}
 }
 
 export const useProject = async (slug: string) => {
-	const singleProjectQuery =
-		defineQuery(`*[_type == "project" && slug.current == $slug][0] {
+	const singleProjectQuery = defineQuery(`*[_type == "project" && slug.current == $slug][0] {
     title,
     client,
     task,
@@ -97,55 +130,18 @@ export const useProject = async (slug: string) => {
     }
   }`)
 
-	const { data, pending, error } =
-		await useSanityQuery<SingleProjectQueryResult>(singleProjectQuery, {
+	const {data, pending, error} = await useSanityQuery<SingleProjectQueryResult>(
+		singleProjectQuery,
+		{
 			slug,
-		})
-
-	return { data, pending, error }
-}
-
-export const usePosts = async () => {
-	const allPostsQuery = defineQuery(`
-    *[_type == "post"] | order(publishedAt desc) {
-      _id,
-      title,
-      "slug": slug.current,
-      publishedAt,
-      excerpt,
-      "coverUrl": coverImage.asset->url
-    }
-  `)
-
-	const { data, pending, error } =
-		await useSanityQuery<AllPostsQueryResult>(allPostsQuery)
-
-	return { data, pending, error }
-}
-
-export const usePost = async (slug: string) => {
-	const postBySlugQuery = defineQuery(`
-    *[_type == "post" && slug.current == $slug][0] {
-      _id,
-      title,
-      publishedAt,
-      "coverUrl": coverImage.asset->url,
-      content,
-      "seo": { title, description }
-    }
-  `)
-
-	const { data, pending, error } = await useSanityQuery<PostBySlugQueryResult>(
-		postBySlugQuery,
-		{ slug },
+		},
 	)
 
-	return { data, pending, error }
+	return {data, pending, error}
 }
 
 export const useServices = async () => {
-	const allServicesQuery =
-		defineQuery(`*[_type == "service"] | order(_createdAt asc) {
+	const allServicesQuery = defineQuery(`*[_type == "service"] | order(_createdAt asc) {
     _id,
     title,
     "slug": slug.current,
@@ -156,15 +152,13 @@ export const useServices = async () => {
     "coverUrl": coverImage.asset->url
   }`)
 
-	const { data, pending, error } =
-		await useSanityQuery<AllServicesQueryResult>(allServicesQuery)
+	const {data, pending, error} = await useSanityQuery<AllServicesQueryResult>(allServicesQuery)
 
-	return { data, pending, error }
+	return {data, pending, error}
 }
 
 export const useService = async (slug: string) => {
-	const singleServiceQuery =
-		defineQuery(`*[_type == "service" && slug.current == $slug][0] {
+	const singleServiceQuery = defineQuery(`*[_type == "service" && slug.current == $slug][0] {
     title,
     badge,
     price,
@@ -193,10 +187,12 @@ export const useService = async (slug: string) => {
     }
   }`)
 
-	const { data, pending, error } =
-		await useSanityQuery<SingleServiceQueryResult>(singleServiceQuery, {
+	const {data, pending, error} = await useSanityQuery<SingleServiceQueryResult>(
+		singleServiceQuery,
+		{
 			slug,
-		})
+		},
+	)
 
-	return { data, pending, error }
+	return {data, pending, error}
 }
