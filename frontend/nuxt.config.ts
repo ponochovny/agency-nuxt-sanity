@@ -51,19 +51,20 @@ export default defineNuxtConfig({
 
 	routeRules: {
 		// Static pages pre-rendered at build time
-		'/contact': { prerender: true },
+		'/about': {prerender: true},
+		'/contact': {prerender: true},
 
 		// CMS dynamic sections cached with ISR (revalidates via webhook or 1 hour fallback TTL)
-		'/': { isr: 3600 },
-		'/services/**': { isr: 3600 },
-		'/cases/**': { isr: 3600 },
-		'/blog/**': { isr: 3600 },
+		'/': {isr: 3600},
+		'/services/**': {isr: 3600},
+		'/cases/**': {isr: 3600},
+		'/blog/**': {isr: 3600},
 
 		// Dynamic Page Builder catch-all routes (e.g. /[slug])
-		'/*': { isr: 3600 },
+		'/*': {isr: 3600},
 
 		// API endpoints and Sanity Studio Visual Editing preview routes (never cached)
-		'/api/**': { cache: false },
-		'/preview/**': { cache: false },
+		'/api/**': {cache: false},
+		'/preview/**': {cache: false},
 	},
 })
