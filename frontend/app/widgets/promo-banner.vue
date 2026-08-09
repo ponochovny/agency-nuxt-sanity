@@ -51,8 +51,6 @@
 </template>
 
 <script setup lang="ts">
-import {computed, ref, watchEffect} from 'vue'
-
 const props = defineProps<{
 	banner?: {
 		enabled: boolean | null
