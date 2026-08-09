@@ -67,4 +67,21 @@ export default defineNuxtConfig({
 		'/api/**': {cache: false},
 		'/preview/**': {cache: false},
 	},
+
+	app: {
+		head: {
+			link: [
+				{rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'},
+				{rel: 'icon', sizes: '192x192', href: '/favicon-192x192.png'},
+				{rel: 'icon', sizes: '512x512', href: '/favicon-512x512.png'},
+
+				// Specific PNG sizes
+				{rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png'},
+				{rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png'},
+
+				// Apple Touch Icon for iOS home screens
+				{rel: 'apple-touch-icon', href: '/apple-touch-icon.png'},
+			],
+		},
+	},
 })
