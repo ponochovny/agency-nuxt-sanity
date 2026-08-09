@@ -21,7 +21,7 @@
 			<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 				<Card
 					v-for="(item, index) in block.items"
-					:key="index"
+					:key="item._key"
 					v-motion-slide-visible-once-bottom
 					:initial="{
 						opacity: 0,
@@ -54,7 +54,7 @@ defineProps<{
 	block: {
 		title: string
 		subtitle: string
-		items: Array<{ title: string; description: string; icon?: string }>
+		items: Array<{_key: string; title: string; description: string; icon?: string}>
 	}
 }>()
 </script>
