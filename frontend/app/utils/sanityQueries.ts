@@ -36,7 +36,7 @@ export const usePage = async (slug: string) => {
 }
 
 export const useSiteSettings = async () => {
-	const siteSettingsQuery = groq`*[_type == "siteSettings"][0] {
+	const siteSettingsQuery = groq`*[_type == "siteSettings"] | order(_updatedAt desc)[0] {
     siteTitle,
     email,
     phone,

@@ -8,7 +8,7 @@ const {data: settings} = await useSiteSettings()
 
 <template>
 	<div class="min-h-screen flex flex-col">
-		<PromoBanner v-if="settings?.promoBanner" :banner="settings.promoBanner" />
+		<PromoBanner v-if="settings?.promoBanner?.enabled" :banner="settings.promoBanner" />
 		<Header :settings="settings" />
 
 		<main class="grow">
