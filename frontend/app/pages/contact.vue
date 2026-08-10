@@ -31,14 +31,7 @@ const submitForm = async () => {
 </script>
 
 <template>
-	<main
-		v-gsap.whenVisible.once.from="{
-			opacity: 0,
-			duration: 0.5,
-			delay: 0.35,
-		}"
-		class="container mx-auto px-4 py-16 max-w-3xl"
-	>
+	<main v-gsap.whenVisible.entrance.fade.delay-150 class="container mx-auto px-4 py-16 max-w-3xl">
 		<h1 class="text-4xl font-bold mb-8">Contact Us</h1>
 
 		<form @submit.prevent="submitForm" class="space-y-6 bg-muted/20 p-8 rounded-xl border">

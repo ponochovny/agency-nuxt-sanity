@@ -12,11 +12,7 @@ const {data, pending} = await usePosts()
 
 		<div v-else class="container mx-auto px-4 py-20">
 			<h1
-				v-gsap.whenVisible.once.from="{
-					opacity: 0,
-					duration: 0.5,
-					delay: 0.35,
-				}"
+				v-gsap.fromInvisible.whenVisible.once.entrance.fade.delay-300
 				class="text-4xl font-bold mb-8"
 			>
 				Blog

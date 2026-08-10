@@ -3,7 +3,7 @@
 		<div class="container mx-auto px-4">
 			<div class="text-center mb-12">
 				<h2
-					v-gsap.add.whenVisible.once.from="{opacity: 0, y: 20, duration: 1, delay: 0.25}"
+					v-gsap.whenVisible.once.from="{opacity: 0, y: 20, duration: 1, delay: 0.25}"
 					class="text-4xl font-bold tracking-tight mb-4"
 				>
 					{{ block.title }}

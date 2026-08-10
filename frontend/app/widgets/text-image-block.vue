@@ -7,7 +7,7 @@
 			>
 				<div class="flex-1 space-y-6">
 					<h2
-						v-gsap.add.whenVisible.once.from="{
+						v-gsap.whenVisible.once.from="{
 							opacity: 0,
 							y: 20,
 							duration: 1,
@@ -18,7 +18,7 @@
 						{{ block.title }}
 					</h2>
 					<p
-						v-gsap.add.whenVisible.once.from="{
+						v-gsap.whenVisible.once.from="{
 							opacity: 0,
 							y: 20,
 							duration: 1,
@@ -33,7 +33,7 @@
 				<div class="flex-1 w-full relative">
 					<div
 						v-if="block.imageUrl"
-						v-gsap.add.whenVisible.once.from="{
+						v-gsap.whenVisible.once.from="{
 							opacity: 0,
 							duration: 1,
 							delay: 0.15,

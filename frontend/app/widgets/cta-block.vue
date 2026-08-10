@@ -4,12 +4,9 @@
 			class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-white via-transparent to-transparent"
 		></div>
 
-		<div
-			v-gsap.timeline
-			class="container mx-auto px-4 max-w-4xl text-center relative z-10 space-y-8"
-		>
+		<div class="container mx-auto px-4 max-w-4xl text-center relative z-10 space-y-8">
 			<h2
-				v-gsap.add.splitText.lines.whenVisible.once.from="{
+				v-gsap.splitText.lines.whenVisible.once.from="{
 					opacity: 0,
 					y: 20,
 					duration: 1,
@@ -20,7 +17,7 @@
 				{{ block.title }}
 			</h2>
 			<p
-				v-gsap.add.whenVisible.once.from="{
+				v-gsap.whenVisible.once.from="{
 					opacity: 0,
 					y: 20,
 					duration: 1,
@@ -32,7 +29,7 @@
 			</p>
 
 			<div
-				v-gsap.add.whenVisible.once.from="{
+				v-gsap.whenVisible.once.from="{
 					opacity: 0,
 					y: 20,
 					duration: 1,

@@ -127,10 +127,13 @@ useSeoMeta({
 							{
 								opacity: 0,
 								y: 30,
+							},
+							{
+								opacity: 1,
+								y: 0,
 								duration: 0.5,
 								delay: 0.3 + idx * 0.15,
 							},
-							{opacity: 1, y: 0},
 						]"
 						class="group border rounded-2xl overflow-hidden bg-card hover:shadow-xl transition-all duration-300 flex flex-col"
 					>

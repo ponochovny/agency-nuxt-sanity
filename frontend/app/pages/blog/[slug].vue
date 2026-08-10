@@ -16,11 +16,7 @@ const {data, pending} = await usePost(slug)
 
 		<div
 			v-else
-			v-gsap.whenVisible.once.from="{
-				opacity: 0,
-				duration: 0.5,
-				delay: 0.35,
-			}"
+			v-gsap.fromInvisible.whenVisible.once.entrance.fade.delay-300
 			class="max-w-3xl px-4 py-10 mx-auto"
 		>
 			<h1 class="text-4xl font-bold mb-4">{{ data.title }}</h1>

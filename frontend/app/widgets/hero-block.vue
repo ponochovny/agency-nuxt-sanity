@@ -4,7 +4,7 @@
 	>
 		<div class="flex flex-col container items-center text-center">
 			<h1
-				v-gsap.add.splitText.chars.from="{
+				v-gsap.splitText.chars.from="{
 					opacity: 0,
 					y: 30,
 					delay: 0.1,

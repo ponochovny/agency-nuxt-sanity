@@ -21,22 +21,14 @@ useSeoMeta({
 		<div v-else-if="project">
 			<header class="mb-16 text-center max-w-3xl mx-auto space-y-8">
 				<h1
-					v-gsap.whenVisible.once.from="{
-						opacity: 0,
-						duration: 0.5,
-						delay: 0.3,
-					}"
+					v-gsap.fromInvisible.whenVisible.once.entrance.fade.delay-300
 					class="text-5xl md:text-6xl font-extrabold tracking-tight leading-tight"
 				>
 					{{ project.title }}
 				</h1>
 
 				<div
-					v-gsap.whenVisible.once.from="{
-						opacity: 0,
-						duration: 0.5,
-						delay: 0.4,
-					}"
+					v-gsap.fromInvisible.whenVisible.once.entrance.fade.delay-300
 					class="flex flex-wrap justify-center gap-12 text-muted-foreground border-y py-6"
 				>
 					<div class="flex flex-col items-center">

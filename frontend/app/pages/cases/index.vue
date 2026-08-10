@@ -5,11 +5,7 @@ const {data: projects} = await useProjects()
 <template>
 	<div class="container mx-auto py-20 px-4">
 		<h1
-			v-gsap.whenVisible.once.from="{
-				opacity: 0,
-				duration: 0.5,
-				delay: 0.3,
-			}"
+			v-gsap.fromInvisible.whenVisible.once.entrance.fade.delay-300
 			class="text-4xl font-bold mb-10"
 		>
 			Our Cases
