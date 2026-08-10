@@ -9,7 +9,6 @@ export default defineNuxtConfig({
 		'shadcn-nuxt',
 		'@pinia/nuxt',
 		'@nuxt/image',
-		'@vueuse/motion/nuxt',
 		'@nuxtjs/color-mode',
 		'v-gsap-nuxt',
 	],
