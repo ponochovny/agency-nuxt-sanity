@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PortableText } from '@portabletext/vue'
+import {PortableText} from '@portabletext/vue'
 
 import HeroBlock from '~/widgets/hero-block.vue'
 import FeaturesBlock from '~/widgets/features-block.vue'
@@ -9,15 +9,15 @@ import LogoMarquee from '~/widgets/logo-marquee.vue'
 
 const route = useRoute()
 const slug = route.params.slug ? String(route.params.slug) : ''
-const { data: service, pending } = await useService(slug)
+const {data: service, pending} = await useService(slug)
 
 const portableTextComponents = {
 	types: {
-		heroBlock: ({ value }: any) => h(HeroBlock, { block: value }),
-		featuresBlock: ({ value }: any) => h(FeaturesBlock, { block: value }),
-		textImageBlock: ({ value }: any) => h(TextImageBlock, { block: value }),
-		ctaBlock: ({ value }: any) => h(CtaBlock, { block: value }),
-		logoMarqueeBlock: ({ value }: any) => h(LogoMarquee, { block: value }),
+		heroBlock: ({value}: any) => h(HeroBlock, {block: value}),
+		featuresBlock: ({value}: any) => h(FeaturesBlock, {block: value}),
+		textImageBlock: ({value}: any) => h(TextImageBlock, {block: value}),
+		ctaBlock: ({value}: any) => h(CtaBlock, {block: value}),
+		logoMarqueeBlock: ({value}: any) => h(LogoMarquee, {block: value}),
 	},
 }
 
@@ -36,8 +36,7 @@ useSeoMeta({
 		<div v-else-if="service">
 			<section
 				class="container mx-auto px-4 max-w-5xl mb-20"
-				v-motion-slide-visible-once-bottom
-				:initial="{ y: 30, opacity: 0 }"
+				v-gsap.entrance.slide-bottom.delay-300
 			>
 				<NuxtLink
 					to="/services"
@@ -62,21 +61,15 @@ useSeoMeta({
 						</p>
 					</div>
 
-					<div
-						class="bg-card border p-6 rounded-2xl shadow-lg space-y-6 w-full lg:max-w-xl"
-					>
+					<div class="bg-card border p-6 rounded-2xl shadow-lg space-y-6 w-full lg:max-w-xl">
 						<div class="space-y-4">
 							<div class="flex justify-between border-b pb-3">
 								<span class="text-muted-foreground text-sm">Cost:</span>
-								<span class="font-bold text-foreground">{{
-									service.price || 'On Request'
-								}}</span>
+								<span class="font-bold text-foreground">{{ service.price || 'On Request' }}</span>
 							</div>
 							<div class="flex justify-between border-b pb-3">
 								<span class="text-muted-foreground text-sm">Timeframe:</span>
-								<span class="font-bold text-foreground">{{
-									service.timeframe || 'Custom'
-								}}</span>
+								<span class="font-bold text-foreground">{{ service.timeframe || 'Custom' }}</span>
 							</div>
 						</div>
 
@@ -93,17 +86,15 @@ useSeoMeta({
 			<section
 				v-if="service.benefits?.length"
 				class="bg-muted/40 py-20 mb-20"
-				v-motion-slide-visible-once-bottom
-				:initial="{ y: 30, opacity: 0 }"
+				v-gsap.entrance.slide-bottom.delay-300
 			>
 				<div class="container mx-auto px-4 max-w-6xl">
-					<h2 class="text-3xl font-bold text-center mb-12">
-						What's Included in the Price
-					</h2>
+					<h2 class="text-3xl font-bold text-center mb-12">What's Included in the Price</h2>
 					<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 						<div
 							v-for="(item, idx) in service.benefits"
 							:key="idx"
+							v-gsap.entrance.slide-bottom="{delay: 0.3 + idx * 0.2}"
 							class="bg-background border p-6 rounded-xl space-y-3"
 						>
 							<div
@@ -123,18 +114,24 @@ useSeoMeta({
 			<section
 				v-if="service.relatedCases?.length"
 				class="container mx-auto px-4 max-w-6xl mb-20"
-				v-motion-slide-visible-once-bottom
-				:initial="{ y: 30, opacity: 0 }"
+				v-gsap.entrance.slide-bottom.delay-300
 			>
-				<h2 class="text-3xl font-bold mb-8 text-center">
-					Work examples for this service
-				</h2>
+				<h2 class="text-3xl font-bold mb-8 text-center">Work examples for this service</h2>
 
 				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 					<NuxtLink
-						v-for="item in service.relatedCases"
+						v-for="(item, idx) in service.relatedCases"
 						:key="item._id"
 						:to="`/cases/${item.slug}`"
+						v-gsap.whenVisible.once.fromTo="[
+							{
+								opacity: 0,
+								y: 30,
+								duration: 0.5,
+								delay: 0.3 + idx * 0.15,
+							},
+							{opacity: 1, y: 0},
+						]"
 						class="group border rounded-2xl overflow-hidden bg-card hover:shadow-xl transition-all duration-300 flex flex-col"
 					>
 						<div class="aspect-video overflow-hidden bg-muted relative">
@@ -152,9 +149,7 @@ useSeoMeta({
 							>
 								{{ item.client }}
 							</span>
-							<h3
-								class="text-xl font-bold group-hover:text-primary transition-colors"
-							>
+							<h3 class="text-xl font-bold group-hover:text-primary transition-colors">
 								{{ item.title }}
 							</h3>
 						</div>
@@ -163,13 +158,15 @@ useSeoMeta({
 			</section>
 
 			<section
+				v-gsap.whenVisible.once.from="{
+					opacity: 0,
+					duration: 0.5,
+					delay: 0.3,
+				}"
 				v-if="service.content?.length"
 				class="container mx-auto px-4 max-w-5xl"
 			>
-				<PortableText
-					:value="service.content"
-					:components="portableTextComponents"
-				/>
+				<PortableText :value="service.content" :components="portableTextComponents" />
 			</section>
 		</div>
 

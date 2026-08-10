@@ -2,10 +2,25 @@
 	<section class="py-20 overflow-hidden bg-muted/10">
 		<div class="container mx-auto px-4">
 			<div v-if="block.title || block.subtitle" class="text-center mb-10">
-				<h2 v-if="block.title" class="text-4xl font-bold tracking-tight mb-3">
+				<h2
+					v-gsap.add.whenVisible.once.from="{
+						opacity: 0,
+						y: 20,
+						duration: 1,
+						delay: 0.5,
+					}"
+					v-if="block.title"
+					class="text-4xl font-bold tracking-tight mb-3"
+				>
 					{{ block.title }}
 				</h2>
 				<p
+					v-gsap.add.whenVisible.once.from="{
+						opacity: 0,
+						y: 20,
+						duration: 1,
+						delay: 0.75,
+					}"
 					v-if="block.subtitle"
 					class="text-xl text-muted-foreground max-w-2xl mx-auto"
 				>
@@ -13,17 +28,22 @@
 				</p>
 			</div>
 
-			<div class="relative overflow-hidden h-8">
+			<div
+				v-gsap.add.whenVisible.once.from="{
+					opacity: 0,
+					y: 20,
+					duration: 1,
+					delay: 0.5,
+				}"
+				class="relative overflow-hidden h-8"
+			>
 				<div class="marquee-wrapper h-full overflow-hidden">
 					<div
 						class="marquee flex items-center gap-6 h-full"
-						:style="{ '--marquee-duration': block.speed || '24s' }"
+						:style="{'--marquee-duration': block.speed || '24s'}"
 					>
 						<template v-for="repeatIndex in 3" :key="repeatIndex">
-							<template
-								v-for="(logo, logoIndex) in logos"
-								:key="`${repeatIndex}-${logoIndex}`"
-							>
+							<template v-for="(logo, logoIndex) in logos" :key="`${repeatIndex}-${logoIndex}`">
 								<div class="logo-item">
 									<NuxtImg
 										v-if="logo?.url"
@@ -45,14 +65,14 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import {computed} from 'vue'
 
 const props = defineProps<{
 	block: {
 		title?: string
 		subtitle?: string
 		speed?: string
-		logos?: Array<{ url?: string; alt?: string }>
+		logos?: Array<{url?: string; alt?: string}>
 	}
 }>()
 

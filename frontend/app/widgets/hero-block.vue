@@ -2,27 +2,30 @@
 	<section
 		class="py-60 flex justify-center items-center text-center bg-linear-to-b from-primary/10 to-transparent"
 	>
-		<div
-			v-motion-slide-visible-once-bottom
-			:initial="{
-				y: 30,
-				opacity: 0,
-			}"
-			:duration="500"
-			class="flex flex-col container items-center text-center"
-		>
-			<h1 class="text-5xl font-bold tracking-tight mb-4">
+		<div class="flex flex-col container items-center text-center">
+			<h1
+				v-gsap.add.splitText.chars.from="{
+					opacity: 0,
+					y: 30,
+					delay: 0.1,
+					duration: 0.6,
+					stagger: 0.025,
+				}"
+				class="text-5xl font-bold tracking-tight mb-4"
+			>
 				{{ block.title }}
 			</h1>
-			<p class="text-xl text-muted-foreground mb-8">
+			<p v-gsap.entrance.slide-bottom.delay-500 class="text-xl text-muted-foreground mb-8">
 				{{ block.subtitle }}
 			</p>
 
-			<Button size="lg" as-child>
-				<NuxtLink to="/contact">
-					{{ block.buttonText }}
-				</NuxtLink>
-			</Button>
+			<div v-gsap.entrance.slide-bottom.delay-850>
+				<Button size="lg" as-child>
+					<NuxtLink to="/contact">
+						{{ block.buttonText }}
+					</NuxtLink>
+				</Button>
+			</div>
 		</div>
 	</section>
 </template>

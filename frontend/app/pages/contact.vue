@@ -23,8 +23,7 @@ const submitForm = async () => {
 		form.email = ''
 		form.message = ''
 	} catch (err: any) {
-		errorMessage.value =
-			err.data?.statusMessage || 'An error occurred while sending the message.'
+		errorMessage.value = err.data?.statusMessage || 'An error occurred while sending the message.'
 	} finally {
 		loading.value = false
 	}
@@ -33,22 +32,16 @@ const submitForm = async () => {
 
 <template>
 	<main
-		v-motion
-		:initial="{
+		v-gsap.whenVisible.once.from="{
 			opacity: 0,
+			duration: 0.5,
+			delay: 0.35,
 		}"
-		:visible-once="{
-			opacity: 1,
-		}"
-		:duration="500"
 		class="container mx-auto px-4 py-16 max-w-3xl"
 	>
 		<h1 class="text-4xl font-bold mb-8">Contact Us</h1>
 
-		<form
-			@submit.prevent="submitForm"
-			class="space-y-6 bg-muted/20 p-8 rounded-xl border"
-		>
+		<form @submit.prevent="submitForm" class="space-y-6 bg-muted/20 p-8 rounded-xl border">
 			<div>
 				<label for="contact-name" class="block text-sm font-medium mb-2">Your Name</label>
 				<Input id="contact-name" v-model="form.name" type="text" required class="w-full" />

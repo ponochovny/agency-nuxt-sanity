@@ -11,6 +11,7 @@ export default defineNuxtConfig({
 		'@nuxt/image',
 		'@vueuse/motion/nuxt',
 		'@nuxtjs/color-mode',
+		'v-gsap-nuxt',
 	],
 
 	colorMode: {

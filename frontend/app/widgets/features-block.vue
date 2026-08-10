@@ -1,19 +1,23 @@
 <template>
 	<section class="py-20 bg-muted/30">
 		<div class="container mx-auto px-4">
-			<div
-				v-motion-slide-visible-once-bottom
-				:initial="{
-					opacity: 0,
-					y: 30,
-				}"
-				:duration="500"
-				class="text-center mb-12"
-			>
-				<h2 class="text-4xl font-bold tracking-tight mb-4">
+			<div class="text-center mb-12">
+				<h2
+					v-gsap.add.whenVisible.once.from="{opacity: 0, y: 20, duration: 1, delay: 0.25}"
+					class="text-4xl font-bold tracking-tight mb-4"
+				>
 					{{ block.title }}
 				</h2>
-				<p class="text-xl text-muted-foreground max-w-2xl mx-auto">
+				<p
+					v-gsap.whenVisible.once.from="{
+						opacity: 0,
+						y: 20,
+						duration: 1,
+						delay: 0.5,
+						start: 'bottom 95%',
+					}"
+					class="text-xl text-muted-foreground max-w-2xl mx-auto"
+				>
 					{{ block.subtitle }}
 				</p>
 			</div>
@@ -22,19 +26,12 @@
 				<Card
 					v-for="(item, index) in block.items"
 					:key="item._key"
-					v-motion-slide-visible-once-bottom
-					:initial="{
+					v-gsap.whenVisible.once.from="{
 						opacity: 0,
-						y: 30,
+						y: 20,
+						duration: 1,
+						delay: 0.15 + index * 0.25,
 					}"
-					:visibleOnce="{
-						opacity: 1,
-						y: 0,
-						transition: {
-							delay: 0 + index * 200,
-						},
-					}"
-					:duration="350"
 					class="h-full flex flex-col hover:shadow-md transition-shadow"
 				>
 					<CardHeader>

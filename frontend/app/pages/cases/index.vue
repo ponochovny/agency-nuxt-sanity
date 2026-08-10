@@ -1,41 +1,24 @@
 <script setup lang="ts">
-const { data: projects } = await useProjects()
+const {data: projects} = await useProjects()
 </script>
 
 <template>
 	<div class="container mx-auto py-20 px-4">
 		<h1
-			v-motion
-			:initial="{
+			v-gsap.whenVisible.once.from="{
 				opacity: 0,
+				duration: 0.5,
+				delay: 0.3,
 			}"
-			:visible-once="{
-				opacity: 1,
-			}"
-			:duration="500"
-			:delay="200"
 			class="text-4xl font-bold mb-10"
 		>
 			Our Cases
 		</h1>
-		<div
-			v-if="projects"
-			class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-		>
+		<div v-if="projects" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 			<NuxtLink
 				v-for="(project, i) in projects"
 				:key="project._id"
-				v-motion
-				:initial="{
-					opacity: 0,
-					y: 30,
-				}"
-				:visible-once="{
-					opacity: 1,
-					y: 0,
-				}"
-				:duration="500"
-				:delay="300 + i * 100"
+				v-gsap.once.entrance.slide-bottom="{delay: 0.3 + i * 0.2}"
 				:to="`/cases/${project.slug}`"
 				class="block group"
 			>

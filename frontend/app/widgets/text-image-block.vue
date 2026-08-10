@@ -3,37 +3,27 @@
 		<div class="container mx-auto px-4">
 			<div
 				class="flex flex-col md:flex-row items-center gap-12 lg:gap-20"
-				:class="{ 'md:flex-row-reverse': block.imagePosition === 'right' }"
+				:class="{'md:flex-row-reverse': block.imagePosition === 'right'}"
 			>
 				<div class="flex-1 space-y-6">
 					<h2
-						v-motion
-						:initial="{
+						v-gsap.add.whenVisible.once.from="{
 							opacity: 0,
-							y: 30,
+							y: 20,
+							duration: 1,
+							delay: 0.15,
 						}"
-						:visibleOnce="{
-							opacity: 1,
-							y: 0,
-						}"
-						:duration="500"
-						:delay="300"
 						class="text-3xl font-bold tracking-tight md:text-4xl"
 					>
 						{{ block.title }}
 					</h2>
 					<p
-						v-motion
-						:initial="{
+						v-gsap.add.whenVisible.once.from="{
 							opacity: 0,
-							y: 30,
+							y: 20,
+							duration: 1,
+							delay: 0.25,
 						}"
-						:visibleOnce="{
-							opacity: 1,
-							y: 0,
-						}"
-						:duration="500"
-						:delay="400"
 						class="text-lg text-muted-foreground leading-relaxed"
 					>
 						{{ block.text }}
@@ -43,15 +33,11 @@
 				<div class="flex-1 w-full relative">
 					<div
 						v-if="block.imageUrl"
-						v-motion
-						:initial="{
+						v-gsap.add.whenVisible.once.from="{
 							opacity: 0,
+							duration: 1,
+							delay: 0.15,
 						}"
-						:visibleOnce="{
-							opacity: 1,
-						}"
-						:duration="750"
-						:delay="300"
 						class="relative rounded-2xl overflow-hidden shadow-2xl aspect-video md:aspect-4/3"
 					>
 						<NuxtImg
