@@ -4,12 +4,12 @@
 	>
 		<div class="flex flex-col container items-center text-center">
 			<h1
-				v-gsap.splitText.chars.from="{
+				v-gsap.splitText.words.from="{
 					opacity: 0,
 					y: 30,
 					delay: 0.1,
 					duration: 0.6,
-					stagger: 0.025,
+					stagger: 0.15,
 				}"
 				class="text-5xl font-bold tracking-tight mb-4"
 			>
