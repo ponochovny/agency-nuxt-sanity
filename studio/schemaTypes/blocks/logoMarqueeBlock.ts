@@ -1,4 +1,4 @@
-import {defineField, defineType} from '@sanity/types'
+import {defineField, defineType} from 'sanity'
 
 export const logoMarqueeBlock = defineType({
   name: 'logoMarqueeBlock',

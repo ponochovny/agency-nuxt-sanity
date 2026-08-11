@@ -65,7 +65,7 @@
 				}"
 			>
 				<h4 class="font-semibold mb-4 text-foreground">Social links</h4>
-				<ul class="space-y-3 text-sm text-muted-foreground">
+				<ul class="flex gap-4 text-sm text-muted-foreground">
 					<li
 						v-for="(link, i) in settings?.socialLinks"
 						:key="i"
@@ -82,7 +82,11 @@
 							rel="noopener noreferrer"
 							class="hover:text-primary transition-colors"
 						>
-							{{ link.platform }}
+							<Icon
+								:name="`grommet-icons:${link.platform.toLowerCase()}`"
+								size="28"
+								class="inline-block"
+							/>
 						</a>
 					</li>
 				</ul>

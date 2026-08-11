@@ -1,5 +1,7 @@
+import {defineQuery} from 'groq'
+
 export const usePage = async (slug: string) => {
-	const pageQuery = groq`*[_type == "page" && slug.current == $slug][0] {
+	const pageQuery = defineQuery(`*[_type == "page" && slug.current == $slug][0] {
         title,
         content[] {
             ...,
@@ -22,7 +24,7 @@ export const usePage = async (slug: string) => {
                 "imageUrl": ogImage.asset->url
             }
         }
-    }`
+    }`)
 
 	const {data, pending, error} = await useSanityQuery<PageQueryResult>(
 		pageQuery,
@@ -36,7 +38,7 @@ export const usePage = async (slug: string) => {
 }
 
 export const useSiteSettings = async () => {
-	const siteSettingsQuery = groq`*[_type == "siteSettings"] | order(_updatedAt desc)[0] {
+	const siteSettingsQuery = defineQuery(`*[_type == "siteSettings"] | order(_updatedAt desc)[0] {
     siteTitle,
     email,
     phone,
@@ -47,7 +49,7 @@ export const useSiteSettings = async () => {
       message,
       ctaUrl
     }
-  }`
+  }`)
 
 	const {data, pending, error} = await useSanityQuery<SiteSettingsQueryResult>(siteSettingsQuery)
 
