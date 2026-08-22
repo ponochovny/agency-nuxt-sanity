@@ -5,9 +5,9 @@
 		class="relative border-b border-primary/20 bg-primary text-white cursor-pointer"
 	>
 		<div
-			class="container mx-auto flex flex-col gap-3 px-4 py-3 md:flex-row md:items-center md:justify-between"
+			class="container mx-auto flex gap-3 px-4 py-3 items-center md:items-center justify-between"
 		>
-			<div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-3 text-center">
+			<div class="flex flex-col gap-2 sm:flex-row items-start sm:gap-3 text-center">
 				<span
 					class="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em]"
 					:class="{

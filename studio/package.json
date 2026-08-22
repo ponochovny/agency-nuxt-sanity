@@ -25,11 +25,12 @@
     "styled-components": "^6.1.18"
   },
   "devDependencies": {
+    "@sanity/browserslist-config": "^1.0.5",
     "@sanity/eslint-config-studio": "^6.0.0",
     "@types/react": "^19.2.14",
-    "eslint": "^9.28",
+    "eslint": "^9.20.0",
     "prettier": "^3.5",
-    "typescript": "^5.8"
+    "typescript": "~5.8.2"
   },
   "prettier": {
     "bracketSpacing": false,

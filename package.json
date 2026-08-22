@@ -1,16 +1,16 @@
 {
-	"name": "nuxt-sanity-test",
-	"description": "",
-	"scripts": {
-		"dev": "npm-run-all --parallel dev:*",
-		"dev:nuxt": "npm run dev --workspace=frontend",
-		"dev:sanity": "npm run dev --workspace=studio"
-	},
-	"workspaces": [
-		"studio",
-		"frontend"
-	],
-	"devDependencies": {
-		"npm-run-all2": "^8.0.4"
-	}
+  "name": "nuxt-sanity-test",
+  "description": "",
+  "scripts": {
+    "dev": "npm-run-all --parallel dev:*",
+    "dev:nuxt": "npm run dev --workspace=frontend",
+    "dev:sanity": "npm run dev --workspace=studio"
+  },
+  "workspaces": [
+    "studio",
+    "frontend"
+  ],
+  "devDependencies": {
+    "npm-run-all2": "^9.0.3"
+  }
 }

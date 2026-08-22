@@ -1,9 +1,19 @@
+<script setup lang="ts">
+defineProps<{settings: any}>()
+import {Moon, Sun} from '@lucide/vue'
+import MobileMenu from './mobile-menu.vue'
+
+const colorMode = useColorMode()
+</script>
+
 <template>
 	<header
 		v-gsap.fromInvisible.entrance.fade
 		class="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md"
 	>
 		<div class="container mx-auto flex h-16 items-center justify-between px-4">
+			<MobileMenu />
+
 			<NuxtLink to="/" class="flex items-center space-x-2">
 				<span class="text-xl font-extrabold tracking-tight">
 					{{ settings?.siteTitle || 'Agency' }}
@@ -48,10 +58,3 @@
 		</div>
 	</header>
 </template>
-
-<script setup lang="ts">
-defineProps<{settings: any}>()
-import {Moon, Sun} from '@lucide/vue'
-
-const colorMode = useColorMode()
-</script>

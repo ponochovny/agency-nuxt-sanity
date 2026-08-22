@@ -82,11 +82,13 @@
 							rel="noopener noreferrer"
 							class="hover:text-primary transition-colors"
 						>
-							<Icon
-								:name="`grommet-icons:${link.platform.toLowerCase()}`"
-								size="28"
-								class="inline-block"
-							/>
+							<ClientOnly>
+								<Icon
+									:name="`grommet-icons:${link.platform.toLowerCase()}`"
+									size="28"
+									class="inline-block"
+								/>
+							</ClientOnly>
 						</a>
 					</li>
 				</ul>

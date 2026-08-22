@@ -1,7 +1,7 @@
 <template>
 	<section
 		v-gsap.fromInvisible.entrance.fade
-		class="py-60 flex justify-center items-center text-center bg-linear-to-b from-primary/10 to-transparent"
+		class="py-20 sm:py-60 flex justify-center items-center text-center bg-linear-to-b from-primary/10 to-transparent"
 	>
 		<div class="flex flex-col container items-center text-center">
 			<h1
@@ -12,7 +12,7 @@
 					duration: 0.6,
 					stagger: 0.15,
 				}"
-				class="text-5xl font-bold tracking-tight mb-4"
+				class="text-4xl sm:text-5xl font-bold tracking-tight mb-4"
 			>
 				{{ block.title }}
 			</h1>
