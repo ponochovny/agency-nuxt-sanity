@@ -1,5 +1,8 @@
 <template>
-	<section class="py-24 bg-primary text-primary-foreground relative overflow-hidden">
+	<section
+		v-gsap.fromInvisible.entrance.fade
+		class="py-24 bg-primary text-primary-foreground relative overflow-hidden"
+	>
 		<div
 			class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-white via-transparent to-transparent"
 		></div>

@@ -1,5 +1,5 @@
 <template>
-	<section class="py-20 overflow-hidden">
+	<section v-gsap.fromInvisible.entrance.fade class="py-20 overflow-hidden">
 		<div class="container mx-auto px-4">
 			<div
 				class="flex flex-col md:flex-row items-center gap-12 lg:gap-20"

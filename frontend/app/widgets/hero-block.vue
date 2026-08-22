@@ -1,5 +1,6 @@
 <template>
 	<section
+		v-gsap.fromInvisible.entrance.fade
 		class="py-60 flex justify-center items-center text-center bg-linear-to-b from-primary/10 to-transparent"
 	>
 		<div class="flex flex-col container items-center text-center">

@@ -1,5 +1,5 @@
 <template>
-	<footer class="border-t bg-muted/30 pt-16 pb-8">
+	<footer v-gsap.fromInvisible.entrance.fade class="border-t bg-muted/30 pt-16 pb-8">
 		<div class="container mx-auto px-4 grid gap-8 md:grid-cols-3 mb-12">
 			<div
 				v-gsap.splitText.lines.whenVisible.once.from="{

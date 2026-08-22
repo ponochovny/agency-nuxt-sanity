@@ -1,5 +1,5 @@
 <template>
-	<section class="py-20 overflow-hidden bg-muted/10">
+	<section v-gsap.fromInvisible.entrance.fade class="py-20 overflow-hidden bg-muted/10">
 		<div class="container mx-auto px-4">
 			<div v-if="block.title || block.subtitle" class="text-center mb-10">
 				<h2

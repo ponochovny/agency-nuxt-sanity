@@ -1,10 +1,6 @@
 <template>
 	<header
-		v-gsap.whenVisible.once.from="{
-			opacity: 0,
-			duration: 0.5,
-			delay: 0.35,
-		}"
+		v-gsap.fromInvisible.entrance.fade
 		class="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md"
 	>
 		<div class="container mx-auto flex h-16 items-center justify-between px-4">
