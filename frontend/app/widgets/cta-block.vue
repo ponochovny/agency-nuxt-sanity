@@ -41,7 +41,10 @@
 				class="pt-4"
 			>
 				<Button size="lg" variant="secondary" class="font-semibold text-lg px-8 h-14" as-child>
-					<NuxtLink to="/contact" @click="gtag('event', 'click', { event_category: 'cta', event_label: block.buttonText })">
+					<NuxtLink
+						to="/contact"
+						@click="gtag('event', 'link_click', {placement: 'cta', link_text: block.buttonText})"
+					>
 						{{ block.buttonText }}
 					</NuxtLink>
 				</Button>
@@ -51,7 +54,7 @@
 </template>
 
 <script setup lang="ts">
-const { gtag } = useGtag()
+const {gtag} = useGtag()
 defineProps<{
 	block: {
 		title: string

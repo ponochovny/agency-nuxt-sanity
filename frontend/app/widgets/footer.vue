@@ -36,7 +36,7 @@
 						}"
 						v-if="settings?.email"
 					>
-						<a :href="`mailto:${settings.email}`" class="hover:text-primary transition-colors" @click="gtag('event', 'click', { event_category: 'footer', event_label: 'Email' })">
+						<a :href="`mailto:${settings.email}`" class="hover:text-primary transition-colors" @click="trackNavigation($event, `mailto:${settings.email}`, 'footer', 'Email')">
 							{{ settings.email }}
 						</a>
 					</li>
@@ -49,7 +49,7 @@
 						}"
 						v-if="settings?.phone"
 					>
-						<a :href="`tel:${settings.phone}`" class="hover:text-primary transition-colors" @click="gtag('event', 'click', { event_category: 'footer', event_label: 'Phone' })">
+						<a :href="`tel:${settings.phone}`" class="hover:text-primary transition-colors" @click="trackNavigation($event, `tel:${settings.phone}`, 'footer', 'Phone')">
 							{{ settings.phone }}
 						</a>
 					</li>
@@ -110,5 +110,6 @@
 
 <script setup lang="ts">
 const { gtag } = useGtag()
+const { trackNavigation } = useTrackedNavigation()
 defineProps<{settings: any}>()
 </script>

@@ -3,7 +3,7 @@
 		v-if="isVisible && banner?.ctaUrl"
 		:to="banner?.ctaUrl"
 		class="relative border-b border-primary/20 bg-primary text-white cursor-pointer"
-		@click="gtag('event', 'click', { event_category: 'promo', event_label: banner?.ctaUrl })"
+		@click="handleBannerClick($event, banner?.ctaUrl)"
 	>
 		<div
 			class="container mx-auto flex gap-3 px-4 py-3 items-center md:items-center justify-between"
@@ -56,6 +56,17 @@
 
 <script setup lang="ts">
 const { gtag } = useGtag()
+const { trackNavigation } = useTrackedNavigation()
+
+const handleBannerClick = (e: MouseEvent, url: string | null | undefined) => {
+	if (!url) return
+	if (url.startsWith('http') || url.startsWith('mailto:') || url.startsWith('tel:')) {
+		trackNavigation(e, url, 'promo', url)
+	} else {
+		gtag('event', 'click', { event_category: 'promo', event_label: url })
+	}
+}
+
 const props = defineProps<{
 	banner?: {
 		enabled: boolean | null
