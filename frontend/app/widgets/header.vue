@@ -4,6 +4,7 @@ import {Moon, Sun} from '@lucide/vue'
 import MobileMenu from './mobile-menu.vue'
 
 const colorMode = useColorMode()
+const { gtag } = useGtag()
 </script>
 
 <template>
@@ -52,7 +53,7 @@ const colorMode = useColorMode()
 				</ClientOnly>
 
 				<Button as-child variant="default">
-					<NuxtLink to="/contact"> Contact Us </NuxtLink>
+					<NuxtLink to="/contact" @click="gtag('event', 'click', { event_category: 'header', event_label: 'Contact Us' })"> Contact Us </NuxtLink>
 				</Button>
 			</div>
 		</div>

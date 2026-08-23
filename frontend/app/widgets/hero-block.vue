@@ -22,7 +22,7 @@
 
 			<div v-gsap.entrance.slide-bottom.delay-850>
 				<Button size="lg" as-child>
-					<NuxtLink to="/contact">
+					<NuxtLink to="/contact" @click="gtag('event', 'click', { event_category: 'hero', event_label: block.buttonText })">
 						{{ block.buttonText }}
 					</NuxtLink>
 				</Button>
@@ -32,6 +32,7 @@
 </template>
 
 <script setup lang="ts">
+const { gtag } = useGtag()
 defineProps<{
 	block: {
 		title: string

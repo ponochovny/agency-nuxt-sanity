@@ -3,6 +3,7 @@
 		v-if="isVisible && banner?.ctaUrl"
 		:to="banner?.ctaUrl"
 		class="relative border-b border-primary/20 bg-primary text-white cursor-pointer"
+		@click="gtag('event', 'click', { event_category: 'promo', event_label: banner?.ctaUrl })"
 	>
 		<div
 			class="container mx-auto flex gap-3 px-4 py-3 items-center md:items-center justify-between"
@@ -54,6 +55,7 @@
 </template>
 
 <script setup lang="ts">
+const { gtag } = useGtag()
 const props = defineProps<{
 	banner?: {
 		enabled: boolean | null

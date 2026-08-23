@@ -36,7 +36,7 @@
 						}"
 						v-if="settings?.email"
 					>
-						<a :href="`mailto:${settings.email}`" class="hover:text-primary transition-colors">
+						<a :href="`mailto:${settings.email}`" class="hover:text-primary transition-colors" @click="gtag('event', 'click', { event_category: 'footer', event_label: 'Email' })">
 							{{ settings.email }}
 						</a>
 					</li>
@@ -49,7 +49,7 @@
 						}"
 						v-if="settings?.phone"
 					>
-						<a :href="`tel:${settings.phone}`" class="hover:text-primary transition-colors">
+						<a :href="`tel:${settings.phone}`" class="hover:text-primary transition-colors" @click="gtag('event', 'click', { event_category: 'footer', event_label: 'Phone' })">
 							{{ settings.phone }}
 						</a>
 					</li>
@@ -81,6 +81,7 @@
 							target="_blank"
 							rel="noopener noreferrer"
 							class="hover:text-primary transition-colors"
+							@click="gtag('event', 'click', { event_category: 'footer', event_label: link.platform })"
 						>
 							<Icon
 								:name="'grommet-icons:' + link.platform.toLowerCase()"
@@ -108,5 +109,6 @@
 </template>
 
 <script setup lang="ts">
+const { gtag } = useGtag()
 defineProps<{settings: any}>()
 </script>

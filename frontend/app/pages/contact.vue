@@ -18,6 +18,13 @@ const submitForm = async () => {
 		// 	method: 'POST',
 		// 	body: { ...form },
 		// })
+		
+		const { gtag } = useGtag()
+		gtag('event', 'generate_lead', {
+			event_category: 'contact',
+			event_label: 'Contact Form Submitted'
+		})
+
 		successMessage.value = 'Thanks! We will contact you shortly.'
 		form.name = ''
 		form.email = ''
