@@ -107,6 +107,5 @@ export default defineNuxtConfig({
 				},
 			],
 		],
-		// initialConsent: false // (strict mode)
 	},
 })

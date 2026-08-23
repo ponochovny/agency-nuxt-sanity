@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import type { PrimitiveProps } from 'reka-ui'
-import type { HTMLAttributes } from 'vue'
-import type { ButtonVariants } from '.'
-import { Primitive } from 'reka-ui'
-import { cn } from '@/shared/lib/utils'
-import { buttonVariants } from '.'
+import type {PrimitiveProps} from 'reka-ui'
+import type {HTMLAttributes} from 'vue'
+import type {ButtonVariants} from '.'
+import {Primitive} from 'reka-ui'
+import {cn} from '@/shared/lib/utils'
+import {buttonVariants} from '.'
 
 interface Props extends /* @vue-ignore */ PrimitiveProps {
 	as?: string | object
@@ -26,7 +26,7 @@ const props = withDefaults(defineProps<Props>(), {
 		:data-size="size"
 		:as="as"
 		:as-child="asChild"
-		:class="cn(buttonVariants({ variant, size }), props.class)"
+		:class="cn(buttonVariants({variant, size}), props.class)"
 	>
 		<slot />
 	</Primitive>
