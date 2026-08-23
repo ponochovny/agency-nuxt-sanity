@@ -6,6 +6,10 @@ import PromoBanner from '~/widgets/promo-banner.vue'
 const {data: settings} = await useSiteSettings()
 
 import {gsap} from 'gsap'
+
+const prefersReducedMotion = () => {
+	return typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+}
 </script>
 
 <template>
@@ -27,6 +31,10 @@ import {gsap} from 'gsap'
 
 					// Animation of the new page appearing
 					onEnter: (el, done) => {
+						if (prefersReducedMotion()) {
+							gsap.set(el, { opacity: 1, y: 0 })
+							return done()
+						}
 						gsap.to(el, {
 							opacity: 1,
 							y: 0,
@@ -38,6 +46,9 @@ import {gsap} from 'gsap'
 
 					// Animation of the current page disappearing
 					onLeave: (el, done) => {
+						if (prefersReducedMotion()) {
+							return done()
+						}
 						gsap.to(el, {
 							opacity: 0,
 							y: 20,
