@@ -12,13 +12,15 @@ const isOpen = ref(false)
 const closeSheet = () => {
 	isOpen.value = false
 }
+
+const props = defineProps<{siteTitle: string}>()
 </script>
 
 <template>
 	<ClientOnly>
 		<Sheet v-if="isMobile" v-model:open="isOpen">
-			<SheetTrigger>
-				<Button variant="outline" size="icon">
+			<SheetTrigger as-child>
+				<Button variant="outline" size="icon" aria-label="Open navigation">
 					<MenuIcon class="h-4 w-4" />
 				</Button>
 			</SheetTrigger>
@@ -29,7 +31,7 @@ const closeSheet = () => {
 					<NuxtLink to="/" class="self-start" @click="closeSheet">
 						<div class="flex items-center">
 							<NuxtImg src="/android-chrome-512x512.png" alt="Logo" class="size-9" />
-							<span class="ml-2.5 text-xl font-semibold"> P. Agency </span>
+							<span class="ml-2.5 text-xl font-semibold">{{ props.siteTitle }}</span>
 						</div>
 					</NuxtLink>
 				</SheetHeader>

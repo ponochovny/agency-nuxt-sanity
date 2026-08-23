@@ -32,7 +32,7 @@
 						duration: 1,
 						delay: 0.15 + index * 0.25,
 					}"
-					class="h-full flex flex-col hover:shadow-md transition-shadow"
+					class="h-full flex flex-col hover:shadow-md transition-shadow hover:shadow-primary/70 shadow-sm hover:border-primary/50"
 				>
 					<CardHeader>
 						<CardTitle class="text-xl">{{ item.title }}</CardTitle>

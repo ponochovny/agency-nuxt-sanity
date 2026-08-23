@@ -4,6 +4,8 @@ import Header from '~/widgets/header.vue'
 import PromoBanner from '~/widgets/promo-banner.vue'
 
 const {data: settings} = await useSiteSettings()
+
+import {gsap} from 'gsap'
 </script>
 
 <template>
@@ -12,7 +14,40 @@ const {data: settings} = await useSiteSettings()
 		<Header :settings="settings" />
 
 		<main class="grow">
-			<NuxtPage />
+			<NuxtPage
+				:transition="{
+					name: 'page',
+					mode: 'out-in', // Wait for the old page animation to complete
+					css: false, // Disable CSS animations as we are using JS (GSAP)
+
+					// Prepare the new page before it appears
+					onBeforeEnter: (el) => {
+						gsap.set(el, {opacity: 0, y: 20})
+					},
+
+					// Animation of the new page appearing
+					onEnter: (el, done) => {
+						gsap.to(el, {
+							opacity: 1,
+							y: 0,
+							duration: 0.5,
+							ease: 'power2.out',
+							onComplete: done, // Must call done!
+						})
+					},
+
+					// Animation of the current page disappearing
+					onLeave: (el, done) => {
+						gsap.to(el, {
+							opacity: 0,
+							y: 20,
+							duration: 0.4,
+							ease: 'power2.in',
+							onComplete: done, // Nuxt will switch the route only after this call
+						})
+					},
+				}"
+			/>
 		</main>
 
 		<Footer :settings="settings" />

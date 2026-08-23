@@ -12,7 +12,7 @@ const colorMode = useColorMode()
 		class="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md"
 	>
 		<div class="container mx-auto flex h-16 items-center justify-between px-4">
-			<MobileMenu />
+			<MobileMenu :site-title="settings?.siteTitle || 'Agency'" />
 
 			<NuxtLink to="/" class="flex items-center space-x-2">
 				<span class="text-xl font-extrabold tracking-tight">

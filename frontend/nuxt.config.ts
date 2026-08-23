@@ -1,6 +1,4 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import fs from 'node:fs'
-
 export default defineNuxtConfig({
 	compatibilityDate: '2025-07-15',
 	devtools: {enabled: true},
@@ -27,8 +25,7 @@ export default defineNuxtConfig({
 		projectId: process.env.SANITY_PROJECT_ID,
 		dataset: process.env.SANITY_DATASET,
 		apiVersion: '2024-06-15',
-		token: process.env.SANITY_STUDIO_TOKEN || '',
-		useCdn: false,
+		useCdn: true,
 		typegen: {
 			enabled: true,
 			schemaTypesPath: '../studio/schemaTypes',
