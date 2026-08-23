@@ -1,15 +1,15 @@
 export const useTrackedNavigation = () => {
-	const { gtag } = useGtag()
+	const {gtag} = useGtag()
 
 	const trackNavigation = (
 		e: MouseEvent,
 		url: string,
 		eventCategory: string,
-		eventLabel: string
+		eventLabel: string,
 	) => {
 		// Preserve modified clicks
-		if (e.ctrlKey || e.shiftKey || e.metaKey || e.button !== 0) {
-			gtag('event', 'click', { event_category: eventCategory, event_label: eventLabel })
+		if (e.ctrlKey || e.shiftKey || e.metaKey || e.altKey || e.button !== 0) {
+			gtag('event', 'click', {event_category: eventCategory, event_label: eventLabel})
 			return
 		}
 
@@ -33,5 +33,5 @@ export const useTrackedNavigation = () => {
 		setTimeout(navigate, 500)
 	}
 
-	return { trackNavigation }
+	return {trackNavigation}
 }
