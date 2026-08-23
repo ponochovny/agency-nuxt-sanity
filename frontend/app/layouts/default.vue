@@ -2,6 +2,7 @@
 import Footer from '~/widgets/footer.vue'
 import Header from '~/widgets/header.vue'
 import PromoBanner from '~/widgets/promo-banner.vue'
+import CookieConsent from '~/widgets/cookie-consent.vue'
 
 const {data: settings} = await useSiteSettings()
 
@@ -62,5 +63,6 @@ const prefersReducedMotion = () => {
 		</main>
 
 		<Footer :settings="settings" />
+		<CookieConsent />
 	</div>
 </template>

@@ -12,6 +12,7 @@ export default defineNuxtConfig({
 		'@nuxtjs/color-mode',
 		'v-gsap-nuxt',
 		'@nuxt/icon',
+		'nuxt-gtag',
 	],
 
 	colorMode: {
@@ -83,10 +84,31 @@ export default defineNuxtConfig({
 				// Apple Touch Icon for iOS home screens
 				{rel: 'apple-touch-icon', href: '/apple-touch-icon.png'},
 			],
+
+			script: [
+				{
+					innerHTML: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('consent', 'default', {
+              'ad_storage': 'denied',
+              'ad_user_data': 'denied',
+              'ad_personalization': 'denied',
+              'analytics_storage': 'denied'
+            });
+					`,
+					type: 'text/javascript',
+				},
+			],
 		},
 	},
 
 	future: {
 		compatibilityVersion: 4,
+	},
+
+	gtag: {
+		id: 'G-C5PK98GRXY',
+		// initialConsent: false // (strict mode)
 	},
 })
