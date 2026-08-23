@@ -84,22 +84,6 @@ export default defineNuxtConfig({
 				// Apple Touch Icon for iOS home screens
 				{rel: 'apple-touch-icon', href: '/apple-touch-icon.png'},
 			],
-
-			script: [
-				{
-					innerHTML: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('consent', 'default', {
-              'ad_storage': 'denied',
-              'ad_user_data': 'denied',
-              'ad_personalization': 'denied',
-              'analytics_storage': 'denied'
-            });
-					`,
-					type: 'text/javascript',
-				},
-			],
 		},
 	},
 
@@ -108,7 +92,21 @@ export default defineNuxtConfig({
 	},
 
 	gtag: {
+		enabled: process.env.NODE_ENV === 'production',
 		id: 'G-C5PK98GRXY',
+		initCommands: [
+			[
+				'consent',
+				'default',
+				{
+					ad_storage: 'denied',
+					ad_user_data: 'denied',
+					ad_personalization: 'denied',
+					analytics_storage: 'denied',
+					wait_for_update: 500,
+				},
+			],
+		],
 		// initialConsent: false // (strict mode)
 	},
 })

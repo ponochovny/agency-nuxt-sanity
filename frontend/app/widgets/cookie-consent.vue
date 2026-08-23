@@ -10,7 +10,8 @@ const consentCookie = useCookie('cookie_consent', {maxAge: 60 * 60 * 24 * 365})
 const show = ref(false)
 
 onMounted(() => {
-	if (!consentCookie.value) {
+	if (!['accepted', 'declined'].includes(consentCookie.value ?? '')) {
+		consentCookie.value = null
 		// Small delay for better UX
 		setTimeout(() => {
 			show.value = true
@@ -41,6 +42,7 @@ const accept = () => {
 const decline = () => {
 	consentCookie.value = 'declined'
 	show.value = false
+	updateGtagConsent('denied')
 }
 </script>
 
@@ -78,5 +80,23 @@ const decline = () => {
 				</div>
 			</div>
 		</div>
+	</Transition>
+
+	<Transition
+		enter-active-class="transition-all duration-300 ease-out"
+		enter-from-class="transform translate-y-full opacity-0"
+		enter-to-class="transform translate-y-0 opacity-100"
+		leave-active-class="transition-all duration-200 ease-in"
+		leave-from-class="transform translate-y-0 opacity-100"
+		leave-to-class="transform translate-y-full opacity-0"
+	>
+		<button
+			v-if="!show"
+			@click="show = true"
+			class="fixed bottom-4 left-4 z-40 rounded-full bg-background/90 border p-3 shadow-md backdrop-blur hover:bg-muted transition-colors flex items-center justify-center group"
+			aria-label="Cookie Settings"
+		>
+			<Cookie class="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
+		</button>
 	</Transition>
 </template>
