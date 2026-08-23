@@ -78,6 +78,8 @@ const openCustomize = () => {
 		preferences.value = {analytics: false, ads: false}
 	} else if (consentCookie.value && typeof consentCookie.value === 'object') {
 		preferences.value = {...consentCookie.value}
+	} else {
+		preferences.value = {analytics: true, ads: true}
 	}
 	showCustomize.value = true
 }
