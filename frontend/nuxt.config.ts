@@ -13,7 +13,10 @@ export default defineNuxtConfig({
 		'v-gsap-nuxt',
 		'@nuxt/icon',
 		'nuxt-gtag',
+		'nuxt-lenis',
 	],
+
+	lenis: {/* Nuxt Lenis options */},
 
 	colorMode: {
 		classSuffix: '',
