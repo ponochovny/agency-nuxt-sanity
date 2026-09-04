@@ -77,8 +77,8 @@ export default defineNuxtConfig({
 		head: {
 			link: [
 				{rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'},
-				{rel: 'icon', sizes: '192x192', href: '/favicon-192x192.png'},
-				{rel: 'icon', sizes: '512x512', href: '/favicon-512x512.png'},
+				{rel: 'icon', sizes: '192x192', href: '/android-chrome-192x192.png'},
+				{rel: 'icon', sizes: '512x512', href: '/android-chrome-512x512.png'},
 
 				// Specific PNG sizes
 				{rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png'},
