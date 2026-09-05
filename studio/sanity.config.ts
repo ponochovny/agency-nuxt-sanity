@@ -17,7 +17,10 @@ export default defineConfig({
 
     presentationTool({
       previewUrl: {
-        origin: 'http://localhost:3000',
+        origin:
+          process.env.NODE_ENV === 'production'
+            ? 'https://p-agency.vercel.app/'
+            : 'http://localhost:3000',
         previewMode: {
           enable: '/preview/enable',
           disable: '/preview/disable',
